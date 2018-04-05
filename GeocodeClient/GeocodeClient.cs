@@ -38,7 +38,7 @@ namespace Geocode
             var client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add( new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await client.GetAsync($"{BASE_URL}{arg}&key={_apiKey}");
+            var response = await client.GetAsync($"{BASE_URL}{arg}&key={_apiKey}").ConfigureAwait(false);
             response.EnsureSuccessStatusCode(); //throws an expection if there was an error
         
             var geo = new GeoObj();
