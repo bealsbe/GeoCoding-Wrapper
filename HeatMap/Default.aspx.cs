@@ -22,6 +22,9 @@ namespace HeatMap
 
         protected void Save_Click(object sender, EventArgs e)
         {
+            //Gets the comp name from the textbox and adds it to the listbox
+            CompanyListBox.Items.Add(CompanyName.Text);
+
             MapLocation location = geocodeClient.GetMapLocation(new Address {
                 Street = txt_AddressLine1.Text,
                 Apt = txt_AddressLine2.Text,
