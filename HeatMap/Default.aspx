@@ -83,6 +83,10 @@
 
         </div>
         <asp:Button ID="Save" runat="server" Text="Save" OnClick="Save_Click" />
+        <div id="Listbox">
+            <asp:ListBox id="CompanyListBox" runat="server" Width="572px">
+            </asp:ListBox>
+        </div>
     </form>
     <div id="map"></div>
     <script>
