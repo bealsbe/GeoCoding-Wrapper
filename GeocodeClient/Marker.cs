@@ -14,11 +14,17 @@ namespace Geocode
         private float _latitude;
         private float _longitude;
 
-        public Marker(float lat, float longi)
+        public Marker(float lat, float lng)
         {
             _latitude = lat;
-            _longitude = longi;
+            _longitude = lng;
         }
 
+        public string LatLng()
+        {
+            return "{lat: " + _latitude.ToString()
+                            + ", lng: " + _longitude.ToString()
+                            + "};";
+        }
     }
 }
