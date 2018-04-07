@@ -19,12 +19,24 @@ namespace Geocode
             _latitude = lat;
             _longitude = lng;
         }
-
+        
+        //Represent the latlng coordinates needed for the JS file as a string
         public string LatLng()
         {
             return "{lat: " + _latitude.ToString()
                             + ", lng: " + _longitude.ToString()
                             + "};";
+        }
+
+        public string[] Head()
+        {
+            return new string[]
+            {
+                "\n        var marker = new google.maps.Marker({",
+                "\n          position: ",
+                "\n"
+
+            };
         }
     }
 }
