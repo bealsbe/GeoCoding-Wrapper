@@ -10,12 +10,12 @@ namespace HeatMap
 {
     public partial class Default1 : System.Web.UI.Page
     {
-        List<MapLocation> addresses;
+        List<Marker> addresses;
         GeocodeClient geocodeClient;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            addresses = new List<MapLocation>();
+            addresses = new List<Marker>();
             geocodeClient = new GeocodeClient();
 
         }

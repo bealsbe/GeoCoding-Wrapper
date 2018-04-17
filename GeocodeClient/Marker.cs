@@ -9,7 +9,7 @@ using System.Text;
 /// </summary>
 namespace Geocode
 {
-    class Marker
+    public class Marker
     {
         private float _latitude;
         private float _longitude;
@@ -18,6 +18,12 @@ namespace Geocode
         {
             _latitude = lat;
             _longitude = lng;
+        }
+
+        public Marker(MapLocation mapLocation)
+        {
+            _latitude = mapLocation.latitude;
+            _longitude = mapLocation.longitude;
         }
         
         //Represent the latlng coordinates needed for the JS file as a string
