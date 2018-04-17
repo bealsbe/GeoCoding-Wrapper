@@ -25,6 +25,8 @@ namespace Geocode
             _latitude = mapLocation.latitude;
             _longitude = mapLocation.longitude;
         }
+
+        
         
         //Represent the latlng coordinates needed for the JS file as a string
         public string LatLng()
