@@ -30,6 +30,21 @@ namespace HeatMap
                 PostalCode = txt_Zip.Text
             });
             Response.Write($"<script>alert('Lat: {location.longitude} Lon: {location.longitude}');</script>");
+
+            Clear_Fields();
         }
+          /// <summary>
+          /// This will clear any data that has been entered into
+          /// the input fields when the Save button has been pressed
+          /// </summary>
+          private void Clear_Fields()
+          {
+               CompanyName.Text = null;
+               txt_AddressLine1.Text = null;
+               txt_AddressLine2.Text = null;
+               txt_City.Text = null;
+               txt_State.Text = null;
+               txt_Zip.Text = null;
+          }
     }
 }
