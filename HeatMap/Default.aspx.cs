@@ -11,6 +11,7 @@ namespace HeatMap
     public partial class Default1 : System.Web.UI.Page
     {
         public List<MapLocation> addresses;
+        public List<Marker> markers;
         GeocodeClient geocodeClient;
 
 
@@ -18,7 +19,6 @@ namespace HeatMap
         {
             addresses = new List<MapLocation>();
             geocodeClient = new GeocodeClient();
-
         }
 
         protected void Save_Click(object sender, EventArgs e)

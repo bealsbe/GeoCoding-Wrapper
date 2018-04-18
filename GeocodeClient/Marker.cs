@@ -36,15 +36,5 @@ namespace Geocode
                             + "};";
         }
 
-        public string[] Head()
-        {
-            return new string[]
-            {
-                "\n        var marker = new google.maps.Marker({",
-                "\n          position: ",
-                "\n"
-
-            };
-        }
     }
 }
