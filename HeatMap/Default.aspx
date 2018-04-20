@@ -94,7 +94,7 @@
 
         // This example requires the Visualization library. Include the libraries=visualization
         // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+        // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05GCbqi1vpEOdptcGBs94meu4-ooZ2hw&libraries=visualization">
 
         var map, heatmap;
 
@@ -104,6 +104,8 @@
                 center: { lat: 44.942, lng: -122.933 }, //Oregon's coordinates (Willamette Valley)
                 mapTypeId: 'roadmap' //map view vs. satellite view
             });
+
+            placeMarker();
 
             heatmap = new google.maps.visualization.HeatmapLayer({
                 data: getPoints(),
@@ -155,9 +157,18 @@
             ];
         }
 
+        //Places a single marker on a map
+        function placeMarker() {
+            var marker = new google.maps.Marker({
+            position: {lat: -25.363, lng: 131.044},
+            map: map,
+            title: '<% CompanyName.Text.ToString(); %>'
+        });
+        }
+
         </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=APIKey&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05GCbqi1vpEOdptcGBs94meu4-ooZ2hw&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>
 
 </body>
