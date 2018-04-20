@@ -168,7 +168,7 @@
 
         </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC05GCbqi1vpEOdptcGBs94meu4-ooZ2hw&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>
 
 </body>
