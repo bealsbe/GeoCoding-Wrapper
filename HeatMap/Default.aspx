@@ -154,7 +154,8 @@
                 %>
             ];
         }
-    </script>
+
+        </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=APIKey&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>

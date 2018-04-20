@@ -24,8 +24,11 @@ namespace HeatMap
         protected void Save_Click(object sender, EventArgs e)
         {
             //Gets the comp name from the textbox and adds it to the listbox
-            CompanyListBox.Items.Add(CompanyName.Text);
+            int i = 1;
+            CompanyListBox.Items.Add(i + ". " + CompanyName.Text);
+            i++;
 
+            //Stores MapLocation 
             MapLocation location = geocodeClient.GetMapLocation(new Address {
                 Street = txt_AddressLine1.Text,
                 Apt = txt_AddressLine2.Text,
@@ -36,6 +39,12 @@ namespace HeatMap
             Response.Write($"<script>alert('Lat: {location.longitude} Lon: {location.longitude}');</script>");
 
             Clear_Fields();
+        }
+
+        //Places one marker on the map
+        private void PlaceMarker(MapLocation location)
+        {
+            
         }
 
         /// <summary>
