@@ -151,16 +151,16 @@
                 <% 
                     foreach (Geocode.MapLocation address in addresses)
                     {
-                        Response.Write($"new google.maps.LatLng({address.latitude}, {address.longitude});\n"); //Reads as a string in C#, outputs into the js file as js code
+                        Response.Write($"placeMarker({address.latitude}, {address.longitude})"); //Reads as a string in C#, outputs into the js file as js code
                     }
                 %>
             ];
         }
 
         //Places a single marker on a map
-        function placeMarker() {
+        function placeMarker(coordlat, coordlong) {
             var marker = new google.maps.Marker({
-            position: {lat: -25.363, lng: 131.044},
+            position: { lat: coordlat, lng: coordlong }, 
             map: map,
             title: '<% CompanyName.Text.ToString(); %>'
         });
@@ -168,7 +168,7 @@
 
         </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk9XYR_DLnFl6kzvnvoFw4lJTQ1Ejbqms&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>
 
 </body>

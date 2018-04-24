@@ -18,7 +18,7 @@ namespace HeatMap
         protected void Page_Load(object sender, EventArgs e)
         {
             addresses = new List<MapLocation>();
-            geocodeClient = new GeocodeClient();
+            geocodeClient = new GeocodeClient("AIzaSyCk9XYR_DLnFl6kzvnvoFw4lJTQ1Ejbqms");
         }
 
         protected void Save_Click(object sender, EventArgs e)
