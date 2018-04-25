@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -41,11 +42,6 @@ namespace HeatMap
             Clear_Fields();
         }
 
-        //Places one marker on the map
-        private void PlaceMarker(MapLocation location)
-        {
-            
-        }
 
         /// <summary>
         /// This will clear any data entered into the textbox input fields,
@@ -59,6 +55,12 @@ namespace HeatMap
             txt_City.Text = null;
             txt_State.Text = null;
             txt_Zip.Text = null;
+        }
+
+        protected void Write_Map(object sender, EventArgs e)
+        {
+            StreamWriter Writer = new StreamWriter("companymap.html");
+
         }
     }
 }
