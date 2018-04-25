@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,9 +13,7 @@ namespace HeatMap
     public partial class Default1 : System.Web.UI.Page
     {
         public List<MapLocation> addresses;
-        public List<Marker> markers;
         GeocodeClient geocodeClient;
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,9 +24,7 @@ namespace HeatMap
         protected void Save_Click(object sender, EventArgs e)
         {
             //Gets the comp name from the textbox and adds it to the listbox
-            int i = 1;
-            CompanyListBox.Items.Add(i + ". " + CompanyName.Text);
-            i++;
+            CompanyListBox.Items.Add((addresses.Count+1) + ": " + CompanyName.Text);
 
             //Stores MapLocation 
             MapLocation location = geocodeClient.GetMapLocation(new Address {
@@ -37,11 +34,44 @@ namespace HeatMap
                 Region = txt_State.Text,
                 PostalCode = txt_Zip.Text
             });
-            Response.Write($"<script>alert('Lat: {location.longitude} Lon: {location.longitude}');</script>");
+            addresses.Add(location);
+
+            Response.Write(@"
+        <script>
+            var map;
+            function initMap()
+            {
+                map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7.5,
+                center: { lat: 44.942, lng: -122.933 }, //Oregon's coordinates (Willamette Valley)
+                mapTypeId: 'roadmap' //map view vs. satellite view
+            });
+
+            "+ placeMarkers() + @"
+            }
+
+            function placeMarker(coordlat, coordlong)
+            {
+                var marker = new google.maps.Marker({
+                position: { lat: coordlat, lng: coordlong },
+                map: map
+            });
+        }
+
+        </script>");
 
             Clear_Fields();
         }
 
+        public string placeMarkers()
+        {
+            StringBuilder datastring = new StringBuilder();
+            foreach(MapLocation address in addresses) {
+                datastring.Append($"placeMarker({address.latitude},{address.longitude});\n");
+            }
+            return datastring.ToString();
+
+        }
 
         /// <summary>
         /// This will clear any data entered into the textbox input fields,
@@ -55,12 +85,6 @@ namespace HeatMap
             txt_City.Text = null;
             txt_State.Text = null;
             txt_Zip.Text = null;
-        }
-
-        protected void Write_Map(object sender, EventArgs e)
-        {
-            StreamWriter Writer = new StreamWriter("companymap.html");
-
         }
     }
 }

@@ -76,13 +76,13 @@ namespace HeatMap {
         protected global::System.Web.UI.WebControls.TextBox txt_Zip;
         
         /// <summary>
-        /// Save control.
+        /// Add control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Save;
+        protected global::System.Web.UI.WebControls.Button Add;
         
         /// <summary>
         /// DisplayButton control.
@@ -101,14 +101,5 @@ namespace HeatMap {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox CompanyListBox;
-        
-        /// <summary>
-        /// Map control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Map;
     }
 }
