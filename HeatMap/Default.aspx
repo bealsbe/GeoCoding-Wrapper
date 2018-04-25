@@ -122,7 +122,7 @@
 
         </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk9XYR_DLnFl6kzvnvoFw4lJTQ1Ejbqms&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>
 
 </body>
