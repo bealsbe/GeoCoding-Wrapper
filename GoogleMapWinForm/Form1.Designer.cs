@@ -48,7 +48,7 @@
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(924, 574);
+            this.PrintButton.Location = new System.Drawing.Point(924, 559);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(245, 50);
             this.PrintButton.TabIndex = 0;
@@ -59,9 +59,9 @@
             // 
             this.LocationListBox.FormattingEnabled = true;
             this.LocationListBox.ItemHeight = 31;
-            this.LocationListBox.Location = new System.Drawing.Point(72, 403);
+            this.LocationListBox.Location = new System.Drawing.Point(82, 388);
             this.LocationListBox.Name = "LocationListBox";
-            this.LocationListBox.Size = new System.Drawing.Size(681, 221);
+            this.LocationListBox.Size = new System.Drawing.Size(671, 221);
             this.LocationListBox.TabIndex = 1;
             // 
             // CompanyLabel
@@ -162,12 +162,13 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(924, 403);
+            this.AddButton.Location = new System.Drawing.Point(924, 388);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(245, 51);
             this.AddButton.TabIndex = 14;
             this.AddButton.Text = "Add Location";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // Form1
             // 
