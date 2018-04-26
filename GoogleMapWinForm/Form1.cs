@@ -24,7 +24,8 @@ namespace GoogleMapWinForm
         private void Form1_Load(object sender, EventArgs e)
         {
             addresses = new List<MapLocation>();
-            geocodeClient = new GeocodeClient("AIzaSyBZXux8AYiiw4qaRYM2ufhn6GtEWat4Lg4 ");
+            //PUT YOUR GOOGLE MAPS API KEY HERE
+            geocodeClient = new GeocodeClient("API_KEY_HERE");
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -42,6 +43,11 @@ namespace GoogleMapWinForm
 
             //Gets the comp name from the textbox and adds it to the listbox
             LocationListBox.Items.Add((addresses.Count) + ": " + CompanyTextBox.Text);
+
+            /* ONLY FOR TESTING*/
+            /* Remove for 'final' product */
+            //Prints the latitude and longitude from the location
+            MessageBox.Show($"Lat: {location.latitude} Long: {location.longitude} ");
         }
     }
 }
