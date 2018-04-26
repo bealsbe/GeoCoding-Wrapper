@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PrintButton = new System.Windows.Forms.Button();
             this.LocationListBox = new System.Windows.Forms.ListBox();
             this.CompanyLabel = new System.Windows.Forms.Label();
@@ -42,11 +43,12 @@
             this.CityTextBox = new System.Windows.Forms.TextBox();
             this.StateTextBox = new System.Windows.Forms.TextBox();
             this.ZipTextBox = new System.Windows.Forms.TextBox();
+            this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(865, 574);
+            this.PrintButton.Location = new System.Drawing.Point(924, 574);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(245, 50);
             this.PrintButton.TabIndex = 0;
@@ -65,7 +67,7 @@
             // CompanyLabel
             // 
             this.CompanyLabel.AutoSize = true;
-            this.CompanyLabel.Location = new System.Drawing.Point(76, 45);
+            this.CompanyLabel.Location = new System.Drawing.Point(73, 42);
             this.CompanyLabel.Name = "CompanyLabel";
             this.CompanyLabel.Size = new System.Drawing.Size(233, 32);
             this.CompanyLabel.TabIndex = 2;
@@ -74,7 +76,7 @@
             // AddressLine1Label
             // 
             this.AddressLine1Label.AutoSize = true;
-            this.AddressLine1Label.Location = new System.Drawing.Point(76, 104);
+            this.AddressLine1Label.Location = new System.Drawing.Point(76, 101);
             this.AddressLine1Label.Name = "AddressLine1Label";
             this.AddressLine1Label.Size = new System.Drawing.Size(219, 32);
             this.AddressLine1Label.TabIndex = 3;
@@ -83,7 +85,7 @@
             // AddressLine2Label
             // 
             this.AddressLine2Label.AutoSize = true;
-            this.AddressLine2Label.Location = new System.Drawing.Point(76, 160);
+            this.AddressLine2Label.Location = new System.Drawing.Point(76, 157);
             this.AddressLine2Label.Name = "AddressLine2Label";
             this.AddressLine2Label.Size = new System.Drawing.Size(219, 32);
             this.AddressLine2Label.TabIndex = 4;
@@ -92,7 +94,7 @@
             // CityLabel
             // 
             this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(76, 218);
+            this.CityLabel.Location = new System.Drawing.Point(76, 215);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Size = new System.Drawing.Size(79, 32);
             this.CityLabel.TabIndex = 5;
@@ -101,7 +103,7 @@
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(76, 272);
+            this.StateLabel.Location = new System.Drawing.Point(76, 269);
             this.StateLabel.Name = "StateLabel";
             this.StateLabel.Size = new System.Drawing.Size(90, 32);
             this.StateLabel.TabIndex = 6;
@@ -110,7 +112,7 @@
             // ZipLabel
             // 
             this.ZipLabel.AutoSize = true;
-            this.ZipLabel.Location = new System.Drawing.Point(76, 329);
+            this.ZipLabel.Location = new System.Drawing.Point(76, 326);
             this.ZipLabel.Name = "ZipLabel";
             this.ZipLabel.Size = new System.Drawing.Size(63, 32);
             this.ZipLabel.TabIndex = 7;
@@ -122,7 +124,6 @@
             this.CompanyTextBox.Name = "CompanyTextBox";
             this.CompanyTextBox.Size = new System.Drawing.Size(441, 38);
             this.CompanyTextBox.TabIndex = 8;
-            this.CompanyTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // AddressLine1TextBox
             // 
@@ -130,7 +131,6 @@
             this.AddressLine1TextBox.Name = "AddressLine1TextBox";
             this.AddressLine1TextBox.Size = new System.Drawing.Size(441, 38);
             this.AddressLine1TextBox.TabIndex = 9;
-            this.AddressLine1TextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // AddressLine2TextBox
             // 
@@ -160,11 +160,21 @@
             this.ZipTextBox.Size = new System.Drawing.Size(441, 38);
             this.ZipTextBox.TabIndex = 13;
             // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(924, 403);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(245, 51);
+            this.AddButton.TabIndex = 14;
+            this.AddButton.Text = "Add Location";
+            this.AddButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 701);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ZipTextBox);
             this.Controls.Add(this.StateTextBox);
             this.Controls.Add(this.CityTextBox);
@@ -179,6 +189,7 @@
             this.Controls.Add(this.CompanyLabel);
             this.Controls.Add(this.LocationListBox);
             this.Controls.Add(this.PrintButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -203,6 +214,7 @@
         private System.Windows.Forms.TextBox CityTextBox;
         private System.Windows.Forms.TextBox StateTextBox;
         private System.Windows.Forms.TextBox ZipTextBox;
+        private System.Windows.Forms.Button AddButton;
     }
 }
 
