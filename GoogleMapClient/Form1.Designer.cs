@@ -1,6 +1,6 @@
 ﻿namespace GoogleMapClient
 {
-    partial class Form1
+    partial class GoogleMapForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,43 +51,45 @@
             // 
             // CSVButton
             // 
-            this.CSVButton.Location = new System.Drawing.Point(39, 34);
+            this.CSVButton.Location = new System.Drawing.Point(27, 112);
             this.CSVButton.Name = "CSVButton";
-            this.CSVButton.Size = new System.Drawing.Size(199, 38);
+            this.CSVButton.Size = new System.Drawing.Size(199, 58);
             this.CSVButton.TabIndex = 2;
             this.CSVButton.Text = "CSV File";
             this.CSVButton.UseVisualStyleBackColor = true;
+            this.CSVButton.Click += new System.EventHandler(this.CSVButton_Click);
             // 
             // HTMLButton
             // 
-            this.HTMLButton.Location = new System.Drawing.Point(39, 122);
+            this.HTMLButton.Location = new System.Drawing.Point(27, 24);
             this.HTMLButton.Name = "HTMLButton";
-            this.HTMLButton.Size = new System.Drawing.Size(199, 38);
+            this.HTMLButton.Size = new System.Drawing.Size(199, 58);
             this.HTMLButton.TabIndex = 3;
             this.HTMLButton.Text = "HTML File";
             this.HTMLButton.UseVisualStyleBackColor = true;
+            this.HTMLButton.Click += new System.EventHandler(this.HTMLButton_Click);
             // 
             // WriteFileButton
             // 
-            this.WriteFileButton.Location = new System.Drawing.Point(471, 196);
+            this.WriteFileButton.Location = new System.Drawing.Point(471, 256);
             this.WriteFileButton.Name = "WriteFileButton";
             this.WriteFileButton.Size = new System.Drawing.Size(209, 53);
             this.WriteFileButton.TabIndex = 4;
             this.WriteFileButton.Text = "Write to File";
             this.WriteFileButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // GoogleMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 277);
+            this.ClientSize = new System.Drawing.Size(815, 361);
             this.Controls.Add(this.WriteFileButton);
             this.Controls.Add(this.HTMLButton);
             this.Controls.Add(this.CSVButton);
             this.Controls.Add(this.HTMLPathTextBox);
             this.Controls.Add(this.CSVTextBox);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "GoogleMapForm";
+            this.Text = "Google Map Client";
             this.ResumeLayout(false);
             this.PerformLayout();
 
