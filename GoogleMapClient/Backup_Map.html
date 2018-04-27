@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title>
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+</head> 
+<body>
+  <div id="map"></div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['Bonneville Power Administration', 45.529267, -122.655448],
+      ['Daimler Trucks NA', 45.556466, -122.705746],
+      ['Nike', 45.507776, -122.828147],
+      ['KPMG', 45.514316, -122.679353],
+      ['Kaiser Permanente', 45.547627, -122.679584],
+      ['Sure ID', 45.561960, -122.917780],
+      ['Huron Consulting Group', 45.417156, -122.734495],
+      ['The Standard Insurance', 45.516939, -122.678044],
+      ['Intel', 45.541787, -122.963249],
+      ['Tektronix', 45.499448, -122.822900]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(45.527367, -122.660251),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>
