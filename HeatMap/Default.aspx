@@ -88,7 +88,7 @@
     <div id="map"></div>
 
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3hfMFJNWo9f7k0_8rbdV3r-ic4bfLExs&libraries=visualization&callback=initMap"> <%--API from developers.google.com--%>
     </script>
 
 </body>

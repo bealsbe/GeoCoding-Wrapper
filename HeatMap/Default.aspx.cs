@@ -18,7 +18,7 @@ namespace HeatMap
         protected void Page_Load(object sender, EventArgs e)
         {
             addresses = new List<MapLocation>();
-            geocodeClient = new GeocodeClient("AIzaSyCk9XYR_DLnFl6kzvnvoFw4lJTQ1Ejbqms");
+            geocodeClient = new GeocodeClient("AIzaSyC3hfMFJNWo9f7k0_8rbdV3r-ic4bfLExs");
         }
 
         protected void Save_Click(object sender, EventArgs e)
@@ -73,10 +73,8 @@ namespace HeatMap
 
         }
 
-        /// <summary>
-        /// This will clear any data entered into the textbox input fields,
-        /// allowing the user to enter another location immediately
-        /// </summary>
+        // This will clear any data entered into the textbox input fields,
+        // allowing the user to enter another location immediately
         private void Clear_Fields()
         {
             CompanyName.Text = null;

@@ -25,7 +25,7 @@ namespace GoogleMapWinForm
         {
             addresses = new List<MapLocation>();
             //PUT YOUR GOOGLE MAPS API KEY HERE
-            geocodeClient = new GeocodeClient("API_KEY_HERE");
+            geocodeClient = new GeocodeClient("AIzaSyC3hfMFJNWo9f7k0_8rbdV3r-ic4bfLExs");
         }
 
         private void AddButton_Click(object sender, EventArgs e)
