@@ -37,14 +37,14 @@
             // 
             // CSVTextBox
             // 
-            this.CSVTextBox.Location = new System.Drawing.Point(288, 35);
+            this.CSVTextBox.Location = new System.Drawing.Point(272, 123);
             this.CSVTextBox.Name = "CSVTextBox";
             this.CSVTextBox.Size = new System.Drawing.Size(392, 38);
             this.CSVTextBox.TabIndex = 0;
             // 
             // HTMLPathTextBox
             // 
-            this.HTMLPathTextBox.Location = new System.Drawing.Point(288, 123);
+            this.HTMLPathTextBox.Location = new System.Drawing.Point(272, 35);
             this.HTMLPathTextBox.Name = "HTMLPathTextBox";
             this.HTMLPathTextBox.Size = new System.Drawing.Size(392, 38);
             this.HTMLPathTextBox.TabIndex = 1;
