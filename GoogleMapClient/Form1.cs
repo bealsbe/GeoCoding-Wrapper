@@ -75,15 +75,14 @@ namespace GoogleMapClient
             {
                 string currentLine;
                 // currentLine will be null when the StreamReader reaches the end of file
-                while ((currentLine = sr.ReadLine()) != null;
+                while ((currentLine = sr.ReadLine()) != null)
                 {
                     //Submit address to Googles API 
                     //Get long/lat
                     //Add entry to the html file
-                    //Always save - remember location/pins
+                    //Always save
                 }
             }
-        )
 
 
 
@@ -114,4 +113,5 @@ namespace GoogleMapClient
             //    }
         }
     }
+
 }
