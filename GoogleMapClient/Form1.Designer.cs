@@ -37,16 +37,16 @@
             // 
             // CSVTextBox
             // 
-            this.CSVTextBox.Location = new System.Drawing.Point(288, 35);
+            this.CSVTextBox.Location = new System.Drawing.Point(272, 123);
             this.CSVTextBox.Name = "CSVTextBox";
-            this.CSVTextBox.Size = new System.Drawing.Size(392, 38);
+            this.CSVTextBox.Size = new System.Drawing.Size(835, 38);
             this.CSVTextBox.TabIndex = 0;
             // 
             // HTMLPathTextBox
             // 
-            this.HTMLPathTextBox.Location = new System.Drawing.Point(288, 123);
+            this.HTMLPathTextBox.Location = new System.Drawing.Point(272, 35);
             this.HTMLPathTextBox.Name = "HTMLPathTextBox";
-            this.HTMLPathTextBox.Size = new System.Drawing.Size(392, 38);
+            this.HTMLPathTextBox.Size = new System.Drawing.Size(835, 38);
             this.HTMLPathTextBox.TabIndex = 1;
             // 
             // CSVButton
@@ -71,18 +71,19 @@
             // 
             // WriteFileButton
             // 
-            this.WriteFileButton.Location = new System.Drawing.Point(471, 256);
+            this.WriteFileButton.Location = new System.Drawing.Point(898, 253);
             this.WriteFileButton.Name = "WriteFileButton";
             this.WriteFileButton.Size = new System.Drawing.Size(209, 53);
             this.WriteFileButton.TabIndex = 4;
             this.WriteFileButton.Text = "Write to File";
             this.WriteFileButton.UseVisualStyleBackColor = true;
+            this.WriteFileButton.Click += new System.EventHandler(this.WriteFileButton_Click);
             // 
             // GoogleMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 361);
+            this.ClientSize = new System.Drawing.Size(1220, 361);
             this.Controls.Add(this.WriteFileButton);
             this.Controls.Add(this.HTMLButton);
             this.Controls.Add(this.CSVButton);
