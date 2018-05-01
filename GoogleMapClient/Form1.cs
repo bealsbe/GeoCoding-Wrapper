@@ -64,20 +64,26 @@ namespace GoogleMapClient
 
         private void WriteFileButton_Click(object sender, EventArgs e)
         {
-
+            ReadCSV();
+            //WriteHTML();
         }
 
         //Example: https://danashurst.com/parsing-a-csv-file/
         private void ReadCSV()
         {
-            TextFieldParser parser = new TextFieldParser(CSVTextBox.Text);
+            TextFieldParser parser = new TextFieldParser(CSVTextBox.Text); //separate after each comma
             parser.TextFieldType = FieldType.Delimited;
-            parser.SetDelimiters(",");
-            
-            //Loop through data
-            while (!parser.EndOfData)
-            {
+            parser.SetDelimiters(","); //ignores commas
 
+            string[] rows = parser.ReadFields();
+
+            //Loop through data
+            while (!parser.EndOfData) //while not at the of file
+            {
+                foreach (string row in rows)
+                {
+
+                }
             }
         }
     }
