@@ -73,6 +73,12 @@ namespace GoogleMapClient
             TextFieldParser parser = new TextFieldParser(CSVTextBox.Text);
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(",");
+            
+            //Loop through data
+            while (!parser.EndOfData)
+            {
+
+            }
         }
     }
 }
