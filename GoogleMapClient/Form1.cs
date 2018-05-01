@@ -53,5 +53,14 @@ namespace GoogleMapClient
             }
         }
 
+        private void WriteFileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReadCSV()
+        {
+
+        }
     }
 }

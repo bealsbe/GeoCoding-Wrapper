@@ -77,6 +77,7 @@
             this.WriteFileButton.TabIndex = 4;
             this.WriteFileButton.Text = "Write to File";
             this.WriteFileButton.UseVisualStyleBackColor = true;
+            this.WriteFileButton.Click += new System.EventHandler(this.WriteFileButton_Click);
             // 
             // GoogleMapForm
             // 
