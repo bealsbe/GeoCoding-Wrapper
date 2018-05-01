@@ -8,12 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.FileIO;
 using Geocode;
 
 namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
+        //List of strings that will hold values for each column in the CSV.
+        //List<string> listA = new List<String>();
+        //List<string> listB = new List<String>();
+        //List<string> listC = new List<String>();
+        //List<string> listD = new List<String>();
+
+
         public GoogleMapForm()
         {
             InitializeComponent();
@@ -59,9 +67,10 @@ namespace GoogleMapClient
 
         }
 
+        //Example: https://danashurst.com/parsing-a-csv-file/
         private void ReadCSV()
         {
-            
+
         }
     }
 }
