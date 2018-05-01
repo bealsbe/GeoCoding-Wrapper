@@ -71,20 +71,47 @@ namespace GoogleMapClient
         //Example: https://danashurst.com/parsing-a-csv-file/
         private void ReadCSV()
         {
-            TextFieldParser parser = new TextFieldParser(CSVTextBox.Text); //separate after each comma
-            parser.TextFieldType = FieldType.Delimited;
-            parser.SetDelimiters(","); //ignores commas
-
-            string[] rows = parser.ReadFields();
-
-            //Loop through data
-            while (!parser.EndOfData) //while not at the of file
+            using (StreamReader sr = new StreamReader(CSVTextBox.Text))
             {
-                foreach (string row in rows)
+                string currentLine;
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null;
                 {
-
+                    //Submit address to Googles API 
+                    //Get long/lat
+                    //Add entry to the html file
+                    //Always save - remember location/pins
                 }
             }
+        )
+
+
+
+
+
+            //    TextFieldParser parser = new TextFieldParser(CSVTextBox.Text); //separate after each comma
+            //    parser.TextFieldType = FieldType.Delimited;
+            //    parser.SetDelimiters(","); //ignores commas
+
+            //    string[] rows = parser.ReadFields();
+
+            //    //Loop through data
+            //    while (!parser.EndOfData) //while not at the of file
+            //    {
+            //        foreach (string row in rows)
+            //        {
+            //            try
+            //            {
+
+            //            }
+            //            catch (Exception)
+            //            {
+
+            //                throw;
+            //            }
+
+            //        }
+            //    }
         }
     }
 }
