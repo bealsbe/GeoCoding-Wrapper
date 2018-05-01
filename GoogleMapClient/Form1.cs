@@ -70,7 +70,9 @@ namespace GoogleMapClient
         //Example: https://danashurst.com/parsing-a-csv-file/
         private void ReadCSV()
         {
-
+            TextFieldParser parser = new TextFieldParser(CSVTextBox.Text);
+            parser.TextFieldType = FieldType.Delimited;
+            parser.SetDelimiters(",");
         }
     }
 }
