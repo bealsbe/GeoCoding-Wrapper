@@ -15,13 +15,6 @@ namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
-        //List of strings that will hold values for each column in the CSV.
-        //List<string> listA = new List<String>();
-        //List<string> listB = new List<String>();
-        //List<string> listC = new List<String>();
-        //List<string> listD = new List<String>();
-
-
         public GoogleMapForm()
         {
             InitializeComponent();
@@ -74,16 +67,17 @@ namespace GoogleMapClient
             //Loops through each line in the csv -  .Skip(1) ignores the first line(Headers)
             foreach (var line in File.ReadAllLines(CSVTextBox.Text, Encoding.GetEncoding(1250)).Skip(1))
             {
+                //Each string in a row gets placed into this array
                 string[] values = line.Split(',');
                 for (int i = 0; i < values.Length; i++)
                 {
+                    //This will assign each value to some object that holds a lost of location fields
                     //values[0]; //Company Name
                     //values[1]; //Street Address
                     //values[2]; //Street Address 2
                     //values[3]; //City
                     //values[4]; //State
                     //values[5]; //ZipCode
-
                 }
             }
 
