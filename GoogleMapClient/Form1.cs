@@ -68,21 +68,37 @@ namespace GoogleMapClient
             //WriteHTML();
         }
 
-        //Example: https://danashurst.com/parsing-a-csv-file/
+        //Read a csv file and gather data from each line to make a web-request to GoogleAPI
         private void ReadCSV()
         {
-            using (StreamReader sr = new StreamReader(CSVTextBox.Text))
+            //Loops through each line in the csv -  .Skip(1) ignores the first line(Headers)
+            foreach (var line in File.ReadAllLines(CSVTextBox.Text, Encoding.GetEncoding(1250)).Skip(1))
             {
-                string currentLine;
-                // currentLine will be null when the StreamReader reaches the end of file
-                while ((currentLine = sr.ReadLine()) != null)
+                string[] values = line.Split(',');
+                for (int i = 0; i < values.Length; i++)
                 {
-                    //Submit address to Googles API 
-                    //Get long/lat
-                    //Add entry to the html file
-                    //Always save
+                    //values[0]; //Company Name
+                    //values[1]; //Street Address
+                    //values[2]; //Street Address 2
+                    //values[3]; //City
+                    //values[4]; //State
+                    //values[5]; //ZipCode
+
                 }
             }
+
+            //using (StreamReader sr = new StreamReader(CSVTextBox.Text))
+            //{
+            //    string currentLine;
+            //    // currentLine will be null when the StreamReader reaches the end of file
+            //    while ((currentLine = sr.ReadLine()) != null)
+            //    {
+            //        //Submit address to Googles API 
+            //        //Get long/lat
+            //        //Add entry to the html file
+            //        //Always save
+            //    }
+            //}
 
 
 
