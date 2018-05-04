@@ -15,6 +15,10 @@ namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
+        public GeocodeClient geocodeClient;
+        //public List<MapLocation> addresses;
+
+
         public GoogleMapForm()
         {
             InitializeComponent();
@@ -68,59 +72,20 @@ namespace GoogleMapClient
             foreach (var line in File.ReadAllLines(CSVTextBox.Text, Encoding.GetEncoding(1250)).Skip(1))
             {
                 //Each string in a row gets placed into this array
-                string[] values = line.Split(',');
-                for (int i = 0; i < values.Length; i++)
+                string[] addressInfo = line.Split(',');
+                for (int i = 0; i < addressInfo.Length; i++)
                 {
                     //This will assign each value to some object that holds a lost of location fields
-                    //values[0]; //Company Name
-                    //values[1]; //Street Address
-                    //values[2]; //Street Address 2
-                    //values[3]; //City
-                    //values[4]; //State
-                    //values[5]; //ZipCode
+                    MapLocation location = geocodeClient.GetMapLocation(new Address
+                    {
+                        Street = addressInfo[1],
+                        Apt = addressInfo[2],
+                        City = addressInfo[3],
+                        Region = addressInfo[4],
+                        PostalCode = addressInfo[5]
+                    });
                 }
             }
-
-            //using (StreamReader sr = new StreamReader(CSVTextBox.Text))
-            //{
-            //    string currentLine;
-            //    // currentLine will be null when the StreamReader reaches the end of file
-            //    while ((currentLine = sr.ReadLine()) != null)
-            //    {
-            //        //Submit address to Googles API 
-            //        //Get long/lat
-            //        //Add entry to the html file
-            //        //Always save
-            //    }
-            //}
-
-
-
-
-
-            //    TextFieldParser parser = new TextFieldParser(CSVTextBox.Text); //separate after each comma
-            //    parser.TextFieldType = FieldType.Delimited;
-            //    parser.SetDelimiters(","); //ignores commas
-
-            //    string[] rows = parser.ReadFields();
-
-            //    //Loop through data
-            //    while (!parser.EndOfData) //while not at the of file
-            //    {
-            //        foreach (string row in rows)
-            //        {
-            //            try
-            //            {
-
-            //            }
-            //            catch (Exception)
-            //            {
-
-            //                throw;
-            //            }
-
-            //        }
-            //    }
         }
     }
 
