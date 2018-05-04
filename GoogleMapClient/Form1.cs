@@ -8,19 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.FileIO;
 using Geocode;
 
 namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
-        //List of strings that will hold values for each column in the CSV.
-        //List<string> listA = new List<String>();
-        //List<string> listB = new List<String>();
-        //List<string> listC = new List<String>();
-        //List<string> listD = new List<String>();
+        public GeocodeClient geocodeClient = new GeocodeClient("API_KEY_HERE");
 
+        //List of location data that stores a company name with its associated MapLocation objects
+        public List<Tuple<string, MapLocation>> locationData = new List<Tuple<string, MapLocation>>();
 
         public GoogleMapForm()
         {
@@ -35,6 +32,10 @@ namespace GoogleMapClient
         private void HTMLButton_Click(object sender, EventArgs e)
         {
             OpenFile(HTMLPathTextBox);
+            //Test Code
+            Markup m = new Markup();
+            m.Head(HTMLPathTextBox.Text);
+            //m.Tail(HTMLPathTextBox.Text);
         }
 
         //Dialog for opening a file
@@ -68,49 +69,28 @@ namespace GoogleMapClient
             //WriteHTML();
         }
 
-        //Example: https://danashurst.com/parsing-a-csv-file/
+        //Read a csv file and gather data from each line to make a web-request to GoogleAPI
         private void ReadCSV()
         {
-            using (StreamReader sr = new StreamReader(CSVTextBox.Text))
+            //Loops through each line in the csv -  .Skip(1) ignores the first line(Headers)
+            foreach (var line in File.ReadAllLines(CSVTextBox.Text, Encoding.GetEncoding(1250)).Skip(1))
             {
-                string currentLine;
-                // currentLine will be null when the StreamReader reaches the end of file
-                while ((currentLine = sr.ReadLine()) != null)
+                //Each string in a row gets placed into this array
+                string[] addressInfo = line.Split(',');
+
+                //Assigns values to the MapLocation object from each string in the array
+                MapLocation location = geocodeClient.GetMapLocation(new Address
                 {
-                    //Submit address to Googles API 
-                    //Get long/lat
-                    //Add entry to the html file
-                    //Always save
-                }
+                    Street = addressInfo[1],
+                    Apt = addressInfo[2],
+                    City = addressInfo[3],
+                    Region = addressInfo[4],
+                    PostalCode = addressInfo[5]
+                });
+               
+                //Adds the company name and MapLocation tied to it into the list
+                locationData.Add(new Tuple<string, MapLocation>(addressInfo[0], location));
             }
-
-
-
-
-
-            //    TextFieldParser parser = new TextFieldParser(CSVTextBox.Text); //separate after each comma
-            //    parser.TextFieldType = FieldType.Delimited;
-            //    parser.SetDelimiters(","); //ignores commas
-
-            //    string[] rows = parser.ReadFields();
-
-            //    //Loop through data
-            //    while (!parser.EndOfData) //while not at the of file
-            //    {
-            //        foreach (string row in rows)
-            //        {
-            //            try
-            //            {
-
-            //            }
-            //            catch (Exception)
-            //            {
-
-            //                throw;
-            //            }
-
-            //        }
-            //    }
         }
     }
 
