@@ -84,6 +84,7 @@ namespace GoogleMapClient
                     Region = addressInfo[4],
                     PostalCode = addressInfo[5]
                 });
+               
                 //Adds the company name and MapLocation tied to it into the list
                 locationData.Add(new Tuple<string, MapLocation>(addressInfo[0], location));
             }
