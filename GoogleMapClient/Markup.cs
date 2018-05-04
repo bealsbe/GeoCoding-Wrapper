@@ -9,30 +9,65 @@ namespace GoogleMapClient
 {
     class Markup
     {
-        public void WriteFile()
+        public void Head(string path)
         {
-            List<string> head = new List<string>();
-            head.Add("<!DOCTYPE html>");
-            head.Add("<html>");
-            head.Add("<head>");
-            head.Add("  < meta http - equiv = \"content-type\" content = \"text/html; charset=UTF-8\" /> ");
-            head.Add("  <title>Google Maps Multiple Markers</title>");
-            head.Add("    <style>");
-            head.Add("      html, body, #map {>");
-            head.Add("        height: 100%;");
-            head.Add("        margin: 0px;");
-            head.Add("        padding: 0px");
-            head.Add("      }");
-            head.Add("    </style>");
-            head.Add("  <script src=\"http://maps.google.com/maps/api/js?sensor=false\" ");
-            head.Add("          type=\"text / javascript\"></script>");
-            head.Add("</head>");
-            head.Add("<body>");
-            head.Add("  <div id=\"map\"></div>");
-            head.Add("");
-            head.Add("  <script type=\"text / javascript\">");
-            head.Add("    var locations = [");
-            //File.WriteAllLines(, head);
+            List<string> html = new List<string>
+            {
+                "<!DOCTYPE html>",
+                "<html>",
+                "<head>",
+                "  <meta http-equiv=\"content - type\" content=\"text/html; charset = UTF-8\" /> ",
+                "  <title>Google Maps Multiple Markers</title>",
+                "    <style>",
+                "      html, body, #map {",
+                "        height: 100%;",
+                "        margin: 0px;",
+                "        padding: 0px",
+                "      }",
+                "    </style>",
+                "  <script src=\"http://maps.google.com/maps/api/js?sensor=false\" ",
+                "          type=\"text/javascript\"></script>",
+                "</head>",
+                "<body>",
+                "  <div id=\"map\"></div>",
+                "",
+                "  <script type=\"text/javascript\">",
+                "    var locations = ["
+            };
+        }
+
+        public void Tail(string path)
+        {
+            List<string> html = new List<string>
+            {
+                "    ];",
+                " ",
+                "    var map = new google.maps.Map(document.getElementById('map'), {",
+                "      zoom: 10,",
+                "      center: new google.maps.LatLng(45.527367, -122.660251),",
+                "      mapTypeId: google.maps.MapTypeId.ROADMAP",
+                "    });",
+                "",
+                "    var infowindow = new google.maps.InfoWindow();",
+                "",
+                "    var marker, i;",
+                "",
+                "    for (i = 0; i < locations.length; i++) { ",
+                "      marker = new google.maps.Marker({",
+                "        position: new google.maps.LatLng(locations[i][1], locations[i][2]),",
+                "        map: map",
+                "      });",
+                "      google.maps.event.addListener(marker, 'click', (function(marker, i) {",
+                "        return function() {",
+                "          infowindow.setContent(locations[i][0]);",
+                "          infowindow.open(map, marker);",
+                "        }",
+                "      })(marker, i));",
+                "    }",
+                "  </script>",
+                "</body>",
+                "</html>"
+            };
         }
     
     }

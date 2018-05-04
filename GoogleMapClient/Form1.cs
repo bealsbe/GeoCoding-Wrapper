@@ -8,14 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.FileIO;
 using Geocode;
 
 namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
-        public GeocodeClient geocodeClient = new GeocodeClient("AIzaSyBZXux8AYiiw4qaRYM2ufhn6GtEWat4Lg4");
+        public GeocodeClient geocodeClient = new GeocodeClient("API_KEY_HERE");
 
         //List of location data that stores a company name with its associated MapLocation objects
         public List<Tuple<string, MapLocation>> locationData = new List<Tuple<string, MapLocation>>();
@@ -33,6 +32,10 @@ namespace GoogleMapClient
         private void HTMLButton_Click(object sender, EventArgs e)
         {
             OpenFile(HTMLPathTextBox);
+            //Test Code
+            Markup m = new Markup();
+            m.Head(HTMLPathTextBox.Text);
+            //m.Tail(HTMLPathTextBox.Text);
         }
 
         //Dialog for opening a file
