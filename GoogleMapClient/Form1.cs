@@ -15,9 +15,10 @@ namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
-        public GeocodeClient geocodeClient;
-        //public List<MapLocation> addresses;
+        public GeocodeClient geocodeClient = new GeocodeClient("AIzaSyBZXux8AYiiw4qaRYM2ufhn6GtEWat4Lg4");
 
+        //List of location data that stores a company name with its associated MapLocation objects
+        public List<Tuple<string, MapLocation>> locationData = new List<Tuple<string, MapLocation>>();
 
         public GoogleMapForm()
         {
@@ -73,18 +74,18 @@ namespace GoogleMapClient
             {
                 //Each string in a row gets placed into this array
                 string[] addressInfo = line.Split(',');
-                for (int i = 0; i < addressInfo.Length; i++)
+
+                //Assigns values to the MapLocation object from each string in the array
+                MapLocation location = geocodeClient.GetMapLocation(new Address
                 {
-                    //This will assign each value to some object that holds a lost of location fields
-                    MapLocation location = geocodeClient.GetMapLocation(new Address
-                    {
-                        Street = addressInfo[1],
-                        Apt = addressInfo[2],
-                        City = addressInfo[3],
-                        Region = addressInfo[4],
-                        PostalCode = addressInfo[5]
-                    });
-                }
+                    Street = addressInfo[1],
+                    Apt = addressInfo[2],
+                    City = addressInfo[3],
+                    Region = addressInfo[4],
+                    PostalCode = addressInfo[5]
+                });
+                //Adds the company name and MapLocation tied to it into the list
+                locationData.Add(new Tuple<string, MapLocation>(addressInfo[0], location));
             }
         }
     }
