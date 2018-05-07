@@ -4,11 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Geocode;
 
 namespace GoogleMapClient
 {
     class Markup
     {
+        private StreamWriter _writer;
+
         public void Head(string path)
         {
             List<string> html = new List<string>
@@ -34,6 +37,8 @@ namespace GoogleMapClient
                 "  <script type=\"text/javascript\">",
                 "    var locations = ["
             };
+
+            html.ForEach(_writer.WriteLine);
         }
 
         public void Tail(string path)
@@ -68,7 +73,25 @@ namespace GoogleMapClient
                 "</body>",
                 "</html>"
             };
+
+            html.ForEach(_writer.Write);
         }
-    
+
+        //Writes location data to the file
+        public void WriteLocations(List<Tuple<string, MapLocation>> locationData)
+        {
+            for (int i = 0; i < locationData.Count; i++)
+            {
+                if (i ==  locationData.Count - 1)
+                {
+                    //last element, no ending comma
+                    _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude}]");
+                }
+                else
+                {
+                    _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude},]");
+                }
+            }
+        }    
     }
 }
