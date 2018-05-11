@@ -14,10 +14,11 @@ namespace GoogleMapClient
 {
     public partial class GoogleMapForm : Form
     {
-        public GeocodeClient geocodeClient = new GeocodeClient("API_KEY_HERE");
+        public GeocodeClient geocodeClient = new GeocodeClient("YOUR_API_KEY");
 
         //List of location data that stores a company name with its associated MapLocation objects
         public List<Tuple<string, MapLocation>> locationData = new List<Tuple<string, MapLocation>>();
+
 
         public GoogleMapForm()
         {
@@ -32,10 +33,6 @@ namespace GoogleMapClient
         private void HTMLButton_Click(object sender, EventArgs e)
         {
             OpenFile(HTMLPathTextBox);
-            //Test Code
-            Markup m = new Markup();
-            m.Head(HTMLPathTextBox.Text);
-            //m.Tail(HTMLPathTextBox.Text);
         }
 
         //Dialog for opening a file
@@ -66,7 +63,15 @@ namespace GoogleMapClient
         private void WriteFileButton_Click(object sender, EventArgs e)
         {
             ReadCSV();
-            //WriteHTML();
+            StreamWriter sw = new StreamWriter(@HTMLPathTextBox.Text)
+            {
+                AutoFlush = true
+            };
+
+            //Methods that write parts of the html file
+            Head(sw);
+            WriteLocations(sw, locationData);
+            Tail(sw);                      
         }
 
         //Read a csv file and gather data from each line to make a web-request to GoogleAPI
@@ -90,6 +95,89 @@ namespace GoogleMapClient
                
                 //Adds the company name and MapLocation tied to it into the list
                 locationData.Add(new Tuple<string, MapLocation>(addressInfo[0], location));
+            }
+        }
+
+        public void Head(StreamWriter writer)
+        {
+            //StreamWriter _writer = new StreamWriter("test.html");
+            List<string> html = new List<string>
+            {
+                "<!DOCTYPE html>",
+                "<html>",
+                "<head>",
+                "  <meta http-equiv=\"content - type\" content=\"text/html; charset = UTF-8\" /> ",
+                "  <title>Google Maps Multiple Markers</title>",
+                "    <style>",
+                "      html, body, #map {",
+                "        height: 100%;",
+                "        margin: 0px;",
+                "        padding: 0px",
+                "      }",
+                "    </style>",
+                "  <script src=\"http://maps.google.com/maps/api/js?sensor=false\" ",
+                "          type=\"text/javascript\"></script>",
+                "</head>",
+                "<body>",
+                "  <div id=\"map\"></div>",
+                "",
+                "  <script type=\"text/javascript\">",
+                "    var locations = ["
+            };
+
+            html.ForEach(writer.WriteLine);
+        }
+
+        public void Tail(StreamWriter writer)
+        {
+            List<string> html = new List<string>
+            {
+                "    ];",
+                " ",
+                "    var map = new google.maps.Map(document.getElementById('map'), {",
+                "      zoom: 10,",
+                "      center: new google.maps.LatLng(45.527367, -122.660251),",
+                "      mapTypeId: google.maps.MapTypeId.ROADMAP",
+                "    });",
+                "",
+                "    var infowindow = new google.maps.InfoWindow();",
+                "",
+                "    var marker, i;",
+                "",
+                "    for (i = 0; i < locations.length; i++) { ",
+                "      marker = new google.maps.Marker({",
+                "        position: new google.maps.LatLng(locations[i][1], locations[i][2]),",
+                "        map: map",
+                "      });",
+                "      google.maps.event.addListener(marker, 'click', (function(marker, i) {",
+                "        return function() {",
+                "          infowindow.setContent(locations[i][0]);",
+                "          infowindow.open(map, marker);",
+                "        }",
+                "      })(marker, i));",
+                "    }",
+                "  </script>",
+                "</body>",
+                "</html>"
+            };
+
+            html.ForEach(writer.WriteLine);
+        }
+
+        //Writes location data to the file
+        public void WriteLocations(StreamWriter writer, List<Tuple<string, MapLocation>> locationData)
+        {
+            for (int i = 0; i < locationData.Count; i++)
+            {
+                if (i == locationData.Count - 1)
+                {
+                    //last element, no ending comma
+                    writer.Write($"      ['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude}]\n");
+                }
+                else
+                {
+                    writer.Write($"      ['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude}],\n");
+                }
             }
         }
     }

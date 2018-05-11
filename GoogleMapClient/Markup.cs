@@ -10,10 +10,17 @@ namespace GoogleMapClient
 {
     class Markup
     {
-        private StreamWriter _writer;
+
+        //private StreamWriter _writer;
+
+        public Markup(string path)
+        {
+            //_writer = new StreamWriter("test.html");
+        }
 
         public void Head(string path)
         {
+            StreamWriter _writer = new StreamWriter("test.html");
             List<string> html = new List<string>
             {
                 "<!DOCTYPE html>",
@@ -38,7 +45,8 @@ namespace GoogleMapClient
                 "    var locations = ["
             };
 
-            html.ForEach(_writer.WriteLine);
+            //html.ForEach(_writer.WriteLine);
+            _writer.WriteLine("hello world");
         }
 
         public void Tail(string path)
@@ -74,7 +82,7 @@ namespace GoogleMapClient
                 "</html>"
             };
 
-            html.ForEach(_writer.Write);
+            //html.ForEach(_writer.Write);
         }
 
         //Writes location data to the file
@@ -85,11 +93,11 @@ namespace GoogleMapClient
                 if (i ==  locationData.Count - 1)
                 {
                     //last element, no ending comma
-                    _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude}]");
+                   // _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude}]");
                 }
                 else
                 {
-                    _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude},]");
+                   // _writer.Write($"\n['{locationData[i].Item1}', {locationData[i].Item2.latitude}, {locationData[i].Item2.longitude},]");
                 }
             }
         }    
